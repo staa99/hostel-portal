@@ -2,7 +2,7 @@
 using StackExchange.Redis;
 
 
-namespace Staawork.Funaab.HostelPortal.Caching
+namespace Staawork.Funaab.HostelPortal.Commons.Caching
 {
     /// <summary>
     ///     The singleton cache that initiates its connection on app startup. When disposed, it releases the connection and
