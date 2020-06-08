@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using Staawork.Funaab.HostelPortal.Caching.Config;
+using Staawork.Funaab.HostelPortal.Commons.Caching.Config;
 using StackExchange.Redis;
 
 
-namespace Staawork.Funaab.HostelPortal.Caching
+namespace Staawork.Funaab.HostelPortal.Commons.Caching
 {
     public class RedisCacheConnector : ICacheConnector
     {

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Staawork.Funaab.HostelPortal.Caching;
+using Staawork.Funaab.HostelPortal.Commons.Caching;
+using Staawork.Funaab.HostelPortal.Commons.Dtos;
 using Staawork.Funaab.HostelPortal.Services.Hostels.Applications.Dto;
 using StackExchange.Redis;
 

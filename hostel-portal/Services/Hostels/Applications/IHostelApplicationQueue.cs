@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Staawork.Funaab.HostelPortal.Services.Hostels.Applications.Dto;
+using Staawork.Funaab.HostelPortal.Commons.Dtos;
 
 
 namespace Staawork.Funaab.HostelPortal.Services.Hostels.Applications

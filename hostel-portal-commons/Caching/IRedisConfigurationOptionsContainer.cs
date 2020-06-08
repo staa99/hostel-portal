@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Options;
-using Staawork.Funaab.HostelPortal.Caching.Config;
+using Staawork.Funaab.HostelPortal.Commons.Caching.Config;
 
 
-namespace Staawork.Funaab.HostelPortal.Caching
+namespace Staawork.Funaab.HostelPortal.Commons.Caching
 {
     public interface IRedisConfigurationOptionsContainer : IOptionsSnapshot<RedisConfigurationOptions>
     {

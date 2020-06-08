@@ -1,7 +1,7 @@
 ﻿using StackExchange.Redis;
 
 
-namespace Staawork.Funaab.HostelPortal.Caching
+namespace Staawork.Funaab.HostelPortal.Commons.Caching
 {
     public class RedisCache : IRedisCache
     {

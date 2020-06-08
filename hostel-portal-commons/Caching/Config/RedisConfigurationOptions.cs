@@ -1,4 +1,4 @@
-﻿namespace Staawork.Funaab.HostelPortal.Caching.Config
+﻿namespace Staawork.Funaab.HostelPortal.Commons.Caching.Config
 {
     public class RedisConfigurationOptions
     {
