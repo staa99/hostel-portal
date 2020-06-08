@@ -56,7 +56,12 @@ namespace Staawork.Funaab.HostelPortal.Services.Hostels.Applications
 
         private static HostelApplicationStatus ParseStatus(RedisValue redisValue)
         {
-            if (!Enum.TryParse(redisValue, out HostelApplicationStatus status))
+            HostelApplicationStatus status;
+            if (redisValue == RedisValue.Null || redisValue == RedisValue.EmptyString)
+            {
+                status = HostelApplicationStatus.Nonexistent;
+            }
+            else if (!Enum.TryParse(redisValue, out status))
             {
                 status = HostelApplicationStatus.FailedUnknownReason;
             }
