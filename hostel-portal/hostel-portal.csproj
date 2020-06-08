@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Staawork.Funaab.HostelPortal</RootNamespace>
+    <UserSecretsId>85b54abf-1eb8-4ddb-b7ff-84acde4b425d</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <AssemblyName>Staawork.Funaab.HostelPortal</AssemblyName>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
+    <PackageReference Include="StackExchange.Redis" Version="2.1.30" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MessageQueue\" />
+    <Folder Include="Services\Hostels\Applications\Config\" />
+    <Folder Include="Services\Hostels\Listing\Config\" />
+    <Folder Include="Services\Payments\ApplicationFees\Config\" />
+    <Folder Include="Services\Payments\HostelFees\Config\" />
+  </ItemGroup>
+
+
+</Project>
