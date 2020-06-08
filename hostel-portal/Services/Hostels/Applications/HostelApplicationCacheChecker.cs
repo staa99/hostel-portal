@@ -28,12 +28,7 @@ namespace Staawork.Funaab.HostelPortal.Services.Hostels.Applications
             var map = await _cache.Database.HashGetAllAsync(applicationMapKey);
             var result = new Dictionary<string, HostelApplicationStatus>();
 
-            foreach (var entry in map)
-            {
-                var status = ParseStatus(entry.Value);
-                result[entry.Name] = status;
-            }
-
+            MapHashEntriesToDictionary(map, result);
             return result;
         }
 
@@ -44,6 +39,17 @@ namespace Staawork.Funaab.HostelPortal.Services.Hostels.Applications
             var applicationMapKey = _keyResolver.Resolve(applicationData.MatricNumber);
             var redisValue = await _cache.Database.HashGetAsync(applicationMapKey, applicationData.HostelId);
             return ParseStatus(redisValue);
+        }
+
+
+        private static void MapHashEntriesToDictionary(IEnumerable<HashEntry>                       map,
+                                                       IDictionary<string, HostelApplicationStatus> result)
+        {
+            foreach (var entry in map)
+            {
+                var status = ParseStatus(entry.Value);
+                result[entry.Name] = status;
+            }
         }
 
 
