@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="StackExchange.Redis" Version="2.1.30" />
     <PackageReference Include="protobuf-net" Version="2.4.6" />
     <PackageReference Include="RabbitMQ.Client" Version="5.1.2" />
@@ -18,7 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Services\Hostels\Applications\Config\" />
-    <Folder Include="Services\Hostels\Listing\Config\" />
     <Folder Include="Services\Payments\ApplicationFees\Config\" />
     <Folder Include="Services\Payments\HostelFees\Config\" />
   </ItemGroup>
