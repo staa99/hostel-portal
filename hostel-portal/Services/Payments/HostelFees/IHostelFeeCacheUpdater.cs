@@ -3,6 +3,6 @@
 
 namespace Staawork.Funaab.HostelPortal.Services.Payments.HostelFees
 {
-    internal interface IHostelFeeStatusCacheChecker : IPaymentStatusCacheChecker
+    internal interface IHostelFeeCacheUpdater : IPaymentCacheUpdater
     { }
 }

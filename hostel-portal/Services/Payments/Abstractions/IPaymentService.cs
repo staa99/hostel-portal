@@ -18,10 +18,10 @@ namespace Staawork.Funaab.HostelPortal.Services.Payments.Abstractions
         /// <param name="cacheUpdater">The cache writer to update the cache with</param>
         /// <param name="webApiService">The payment Web API service to use in initiating the payment</param>
         /// <returns></returns>
-        Task<PaymentStatus> CheckPaymentStatusAsync(string                     matricNumber,
-                                                    IPaymentStatusCacheChecker cacheChecker,
-                                                    IPaymentStatusCacheUpdater cacheUpdater,
-                                                    IPaymentWebApiService      webApiService);
+        Task<PaymentDto?> GetPaymentRecordAsync(string                     matricNumber,
+                                                IPaymentCacheChecker cacheChecker,
+                                                IPaymentCacheUpdater cacheUpdater,
+                                                IPaymentWebApiService      webApiService);
 
 
         /// <summary>
@@ -34,10 +34,12 @@ namespace Staawork.Funaab.HostelPortal.Services.Payments.Abstractions
         /// </summary>
         /// <param name="matricNumber">The matric number to initiate payment for</param>
         /// <param name="cacheChecker">The reader to check the cache with</param>
+        /// <param name="cacheUpdater"></param>
         /// <param name="webApiService">The payment Web API service to use in initiating the payment</param>
         /// <returns></returns>
-        Task<InitiatePaymentResultDto> InitiatePaymentAsync(string                     matricNumber,
-                                                            IPaymentStatusCacheChecker cacheChecker,
-                                                            IPaymentWebApiService      webApiService);
+        Task<InitiatePaymentResultDto> InitiatePaymentAsync(string                matricNumber,
+                                                            IPaymentCacheChecker  cacheChecker,
+                                                            IPaymentCacheUpdater  cacheUpdater,
+                                                            IPaymentWebApiService webApiService);
     }
 }
