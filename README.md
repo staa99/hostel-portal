@@ -1,7 +1,7 @@
 # hostel-portal
 A toy project to play with the basics of Redis, RabbitMQ and Docker
 
-I'm learning the basics of Redis, RabbitMQ and Docker for building applications to be scalable.
+I'm learning the basics of Redis, RabbitMQ and Docker for building scalable applications.
 
 I decided to create this to solve a problem in my school - 
 The hostel portal always crashes when opened every year because of inefficiencies in the design. 
