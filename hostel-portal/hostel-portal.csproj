@@ -19,8 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Services\Hostels\Applications\Config\" />
-    <Folder Include="Services\Payments\ApplicationFees\Config\" />
-    <Folder Include="Services\Payments\HostelFees\Config\" />
   </ItemGroup>
 
   <ItemGroup>

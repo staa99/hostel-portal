@@ -2,12 +2,12 @@
 {
     public enum HostelApplicationStatus
     {
+        Nonexistent,
         Queued,
         InProcess,
         Succeeded,
         FailedNoHostelAvailable,
         FailedUnknownReason,
-        FailedDoNotRepeat,
-        Nonexistent
+        FailedDoNotRepeat
     }
 }

@@ -9,7 +9,7 @@ namespace Staawork.Funaab.HostelPortal.Services.Payments.Abstractions
     /// </summary>
     internal interface IPaymentWebApiService
     {
-        Task<PaymentDto?>            GetPaymentRecordAsync(string matricNumber);
-        Task<InitiatePaymentResultDto> InitiatePaymentAsync(string    matricNumber);
+        Task<PaymentDto?>              GetPaymentRecordAsync(string matricNumber);
+        Task<InitiatePaymentResultDto> InitiatePaymentAsync(string  matricNumber);
     }
 }

@@ -18,10 +18,10 @@ namespace Staawork.Funaab.HostelPortal.Services.Payments.Abstractions
         /// <param name="cacheUpdater">The cache writer to update the cache with</param>
         /// <param name="webApiService">The payment Web API service to use in initiating the payment</param>
         /// <returns></returns>
-        Task<PaymentDto?> GetPaymentRecordAsync(string                     matricNumber,
-                                                IPaymentCacheChecker cacheChecker,
-                                                IPaymentCacheUpdater cacheUpdater,
-                                                IPaymentWebApiService      webApiService);
+        Task<PaymentDto?> GetPaymentRecordAsync(string                matricNumber,
+                                                IPaymentCacheChecker  cacheChecker,
+                                                IPaymentCacheUpdater  cacheUpdater,
+                                                IPaymentWebApiService webApiService);
 
 
         /// <summary>

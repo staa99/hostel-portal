@@ -3,9 +3,9 @@ using Staawork.Funaab.HostelPortal.Services.Payments.Abstractions;
 using Staawork.Funaab.HostelPortal.Services.Payments.Abstractions.Dto;
 
 
-namespace Staawork.Funaab.HostelPortal.Services.Payments.ApplicationFees
+namespace Staawork.Funaab.HostelPortal.Services.Payments
 {
-    internal class ApplicationFeePaymentService : IApplicationFeePaymentService
+    internal class PaymentService : IPaymentService
     {
         /// <inheritdoc />
         public async Task<PaymentDto?> GetPaymentRecordAsync(string                matricNumber,
