@@ -5,7 +5,7 @@ using Staawork.Funaab.HostelPortal.Services.Hostels.Listing.Dto;
 
 namespace Staawork.Funaab.HostelPortal.Services.Hostels.Listing
 {
-    internal interface IHostelCacheUpdater
+    public interface IHostelCacheUpdater
     {
         /// <summary>
         ///     Update the hostels with the given data

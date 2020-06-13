@@ -8,7 +8,7 @@ namespace Staawork.Funaab.HostelPortal.Services.Hostels.Listing
     /// <summary>
     ///     Base interface for high level hostel
     /// </summary>
-    internal interface IHostelLoader
+    public interface IHostelLoader
     {
         /// <summary>
         ///     This API loads the list of hostels, with the prices and availability. It uses the cache, if the list is not in the

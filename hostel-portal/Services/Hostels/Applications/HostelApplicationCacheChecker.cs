@@ -9,7 +9,7 @@ using StackExchange.Redis;
 
 namespace Staawork.Funaab.HostelPortal.Services.Hostels.Applications
 {
-    internal class HostelApplicationCacheChecker : IHostelApplicationCacheChecker
+    public class HostelApplicationCacheChecker : IHostelApplicationCacheChecker
     {
         private readonly IRedisCache                        _cache;
         private readonly IHostelApplicationRedisKeyResolver _keyResolver;

@@ -3,6 +3,6 @@
     /// <summary>
     ///     Resolves the RedisKey for application fees payments
     /// </summary>
-    internal interface IHostelApplicationFeeRedisKeyResolver : IPaymentRedisKeyResolver
+    public interface IHostelApplicationFeeRedisKeyResolver : IPaymentRedisKeyResolver
     { }
 }

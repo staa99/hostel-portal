@@ -7,7 +7,7 @@ namespace Staawork.Funaab.HostelPortal.Services.Authentication
     /// <summary>
     ///     The default user authentication service.
     /// </summary>
-    internal class UserAuthenticationService : IUserAuthenticationService
+    public class UserAuthenticationService : IUserAuthenticationService
     {
         /// <summary>
         ///     This API gets the user profile from the username and password. Such is how the system has been designed.

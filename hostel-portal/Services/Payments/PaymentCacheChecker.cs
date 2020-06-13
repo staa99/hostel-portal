@@ -10,7 +10,7 @@ using StackExchange.Redis;
 
 namespace Staawork.Funaab.HostelPortal.Services.Payments
 {
-    internal class PaymentCacheChecker : IPaymentCacheChecker
+    public class PaymentCacheChecker : IPaymentCacheChecker
     {
         private readonly IRedisCache                           _cache;
         private readonly PaymentConfiguration                  _configuration;

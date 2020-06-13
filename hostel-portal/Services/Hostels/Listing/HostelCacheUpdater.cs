@@ -10,7 +10,7 @@ using StackExchange.Redis;
 
 namespace Staawork.Funaab.HostelPortal.Services.Hostels.Listing
 {
-    internal class HostelCacheUpdater : IHostelCacheUpdater
+    public class HostelCacheUpdater : IHostelCacheUpdater
     {
         private readonly IRedisCache _cache;
 

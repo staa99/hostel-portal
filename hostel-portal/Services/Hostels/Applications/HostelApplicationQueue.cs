@@ -8,7 +8,7 @@ using Staawork.Funaab.HostelPortal.Commons.Serialization;
 
 namespace Staawork.Funaab.HostelPortal.Services.Hostels.Applications
 {
-    internal class HostelApplicationQueue : IHostelApplicationQueue
+    public class HostelApplicationQueue : IHostelApplicationQueue
     {
         private readonly HostelApplicationQueueConfiguration _configuration;
         private readonly IHostelApplicationSerializer        _hostelApplicationSerializer;

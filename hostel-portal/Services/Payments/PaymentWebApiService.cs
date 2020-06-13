@@ -6,7 +6,7 @@ using Staawork.Funaab.HostelPortal.Services.Payments.Abstractions.Dto;
 
 namespace Staawork.Funaab.HostelPortal.Services.Payments
 {
-    internal class PaymentWebApiService : IPaymentWebApiService
+    public class PaymentWebApiService : IPaymentWebApiService
     {
         private PaymentStatus currentMockStatus = PaymentStatus.Nonexistent;
 

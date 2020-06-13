@@ -7,7 +7,7 @@ namespace Staawork.Funaab.HostelPortal.Services.Payments.Abstractions
     /// <summary>
     ///     The base interface for all payment Web API services in the hostel portal
     /// </summary>
-    internal interface IPaymentWebApiService
+    public interface IPaymentWebApiService
     {
         Task<PaymentDto?>              GetPaymentRecordAsync(string matricNumber);
         Task<InitiatePaymentResultDto> InitiatePaymentAsync(string  matricNumber);

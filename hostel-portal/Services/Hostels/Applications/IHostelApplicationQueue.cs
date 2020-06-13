@@ -4,7 +4,7 @@ using Staawork.Funaab.HostelPortal.Commons.Dtos;
 
 namespace Staawork.Funaab.HostelPortal.Services.Hostels.Applications
 {
-    internal interface IHostelApplicationQueue
+    public interface IHostelApplicationQueue
     {
         /// <summary>
         ///     Posts a new hostel application to the message queue.

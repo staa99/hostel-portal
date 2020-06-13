@@ -5,7 +5,7 @@ using Staawork.Funaab.HostelPortal.Services.Hostels.Listing.Dto;
 
 namespace Staawork.Funaab.HostelPortal.Services.Hostels.Listing
 {
-    internal class HostelWebApiLoader : IHostelWebApiLoader
+    public class HostelWebApiLoader : IHostelWebApiLoader
     {
         /// <inheritdoc />
         public async Task<ICollection<HostelDto>> LoadHostels()
