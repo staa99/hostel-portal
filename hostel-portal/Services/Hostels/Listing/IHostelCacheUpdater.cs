@@ -11,6 +11,6 @@ namespace Staawork.Funaab.HostelPortal.Services.Hostels.Listing
         ///     Update the hostels with the given data
         /// </summary>
         /// <returns></returns>
-        Task UpdateHostels(ICollection<HostelDto> hostels);
+        Task UpdateHostels(IEnumerable<HostelDto> hostels);
     }
 }

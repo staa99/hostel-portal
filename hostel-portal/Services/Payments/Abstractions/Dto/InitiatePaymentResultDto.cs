@@ -2,6 +2,7 @@
 {
     public sealed class InitiatePaymentResultDto
     {
-        public string Reference { get; set; }
+        public string Message { get; set; }
+        public PaymentDto PaymentInfo { get; set; }
     }
 }

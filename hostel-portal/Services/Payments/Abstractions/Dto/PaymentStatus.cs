@@ -2,6 +2,7 @@
 {
     public enum PaymentStatus
     {
+        Nonexistent,
         Initiated,
         Paid,
         Failed
