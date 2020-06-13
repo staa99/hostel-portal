@@ -29,7 +29,7 @@ namespace Staawork.Funaab.HostelPortal.Services.Hostels.Applications
             var map = await _cache.Database.HashGetAllAsync(applicationMapKey);
             var result = new Dictionary<string, HostelApplicationStatus>();
 
-            MapHashEntriesToDictionary(map, result);
+            RedisUtilities.MapHashEntriesToDictionary(map, result, ConvertRedisHashEntryToHostelApplicationStatus);
             return result;
         }
 
@@ -43,14 +43,11 @@ namespace Staawork.Funaab.HostelPortal.Services.Hostels.Applications
         }
 
 
-        private static void MapHashEntriesToDictionary(IEnumerable<HashEntry>                       map,
-                                                       IDictionary<string, HostelApplicationStatus> result)
+        private static KeyValuePair<string, HostelApplicationStatus> ConvertRedisHashEntryToHostelApplicationStatus(
+            HashEntry entry)
         {
-            foreach (var entry in map)
-            {
-                var status = ParseStatus(entry.Value);
-                result[entry.Name] = status;
-            }
+            var status = ParseStatus(entry.Value);
+            return new KeyValuePair<string, HostelApplicationStatus>(entry.Name, status);
         }
 
 
