@@ -7,7 +7,7 @@ namespace Staawork.Funaab.HostelPortal.Services.Payments.Abstractions
     /// <summary>
     ///     The base interface for all hostel payment status cache checkers
     /// </summary>
-    internal interface IPaymentCacheChecker
+    public interface IPaymentCacheChecker
     {
         Task<PaymentDto?> GetPaymentRecordAsync(string matricNumber);
     }

@@ -8,7 +8,7 @@ using Staawork.Funaab.HostelPortal.Services.Payments.Abstractions.Dto;
 
 namespace Staawork.Funaab.HostelPortal.Services.Payments
 {
-    internal class PaymentCacheUpdater : IPaymentCacheUpdater
+    public class PaymentCacheUpdater : IPaymentCacheUpdater
     {
         private readonly IRedisCache                           _cache;
         private readonly PaymentConfiguration                  _configuration;

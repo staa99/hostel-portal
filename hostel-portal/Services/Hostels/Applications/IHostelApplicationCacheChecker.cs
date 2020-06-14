@@ -6,7 +6,7 @@ using Staawork.Funaab.HostelPortal.Services.Hostels.Applications.Dto;
 
 namespace Staawork.Funaab.HostelPortal.Services.Hostels.Applications
 {
-    internal interface IHostelApplicationCacheChecker
+    public interface IHostelApplicationCacheChecker
     {
         /// <summary>
         ///     Checks the cache for statuses of all hostel applications of the student.

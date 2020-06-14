@@ -5,7 +5,7 @@ using Staawork.Funaab.HostelPortal.Services.Hostels.Listing.Dto;
 
 namespace Staawork.Funaab.HostelPortal.Services.Hostels.Listing
 {
-    internal interface IHostelCacheChecker
+    public interface IHostelCacheChecker
     {
         /// <summary>
         ///     Loads tbe list of hostels from the cache

@@ -6,7 +6,7 @@ using Staawork.Funaab.HostelPortal.Services.Hostels.Applications.Dto;
 
 namespace Staawork.Funaab.HostelPortal.Services.Hostels.Applications
 {
-    internal class HostelApplicationCacheUpdater : IHostelApplicationCacheUpdater
+    public class HostelApplicationCacheUpdater : IHostelApplicationCacheUpdater
     {
         private readonly IRedisCache                        _cache;
         private readonly IHostelApplicationRedisKeyResolver _keyResolver;

@@ -9,7 +9,7 @@ namespace Staawork.Funaab.HostelPortal.Services.Hostels.Applications
     /// <summary>
     ///     Base interface for high level hostel application.
     /// </summary>
-    internal interface IHostelApplicationService
+    public interface IHostelApplicationService
     {
         /// <summary>
         ///     Checks the cache for the status of all hostel applications for the given matriculation number.
