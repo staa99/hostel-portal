@@ -8,16 +8,7 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
     [TestFixture]
     public class HostelFeeRedisKeyResolverTests
     {
-        [SetUp]
-        public void SetUp()
-        {
-            mockRepository = new MockRepository(MockBehavior.Strict);
-        }
-
-
         private MockRepository mockRepository;
-
-        private HostelFeeRedisKeyResolver CreateHostelFeeRedisKeyResolver() => new HostelFeeRedisKeyResolver();
 
 
         [Test]
@@ -35,5 +26,15 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
             Assert.Fail();
             mockRepository.VerifyAll();
         }
+
+
+        [SetUp]
+        public void SetUp()
+        {
+            mockRepository = new MockRepository(MockBehavior.Strict);
+        }
+
+
+        private HostelFeeRedisKeyResolver CreateHostelFeeRedisKeyResolver() => new HostelFeeRedisKeyResolver();
     }
 }

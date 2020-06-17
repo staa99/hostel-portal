@@ -9,16 +9,7 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
     [TestFixture]
     public class PaymentWebApiServiceTests
     {
-        [SetUp]
-        public void SetUp()
-        {
-            mockRepository = new MockRepository(MockBehavior.Strict);
-        }
-
-
         private MockRepository mockRepository;
-
-        private PaymentWebApiService CreateService() => new PaymentWebApiService();
 
 
         [Test]
@@ -53,5 +44,15 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
             Assert.Fail();
             mockRepository.VerifyAll();
         }
+
+
+        [SetUp]
+        public void SetUp()
+        {
+            mockRepository = new MockRepository(MockBehavior.Strict);
+        }
+
+
+        private PaymentWebApiService CreateService() => new PaymentWebApiService();
     }
 }

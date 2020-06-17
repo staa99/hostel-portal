@@ -12,29 +12,12 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
     [TestFixture]
     public class PaymentCacheCheckerTests
     {
-        [SetUp]
-        public void SetUp()
-        {
-            mockRepository = new MockRepository(MockBehavior.Strict);
-
-            mockPaymentConfiguration = mockRepository.Create<PaymentConfiguration>();
-            mockRedisCache = mockRepository.Create<IRedisCache>();
-            mockHostelApplicationFeeRedisKeyResolver = mockRepository.Create<IHostelApplicationFeeRedisKeyResolver>();
-        }
-
-
-        private MockRepository mockRepository;
-
-        private Mock<PaymentConfiguration>                  mockPaymentConfiguration;
-        private Mock<IRedisCache>                           mockRedisCache;
         private Mock<IHostelApplicationFeeRedisKeyResolver> mockHostelApplicationFeeRedisKeyResolver;
 
+        private Mock<PaymentConfiguration> mockPaymentConfiguration;
+        private Mock<IRedisCache>          mockRedisCache;
 
-        private PaymentCacheChecker CreatePaymentCacheChecker() =>
-            new PaymentCacheChecker(
-                mockPaymentConfiguration.Object,
-                mockRedisCache.Object,
-                mockHostelApplicationFeeRedisKeyResolver.Object);
+        private MockRepository mockRepository;
 
 
         [Test]
@@ -52,5 +35,23 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
             Assert.Fail();
             mockRepository.VerifyAll();
         }
+
+
+        [SetUp]
+        public void SetUp()
+        {
+            mockRepository = new MockRepository(MockBehavior.Strict);
+
+            mockPaymentConfiguration = mockRepository.Create<PaymentConfiguration>();
+            mockRedisCache = mockRepository.Create<IRedisCache>();
+            mockHostelApplicationFeeRedisKeyResolver = mockRepository.Create<IHostelApplicationFeeRedisKeyResolver>();
+        }
+
+
+        private PaymentCacheChecker CreatePaymentCacheChecker() =>
+            new PaymentCacheChecker(
+                mockPaymentConfiguration.Object,
+                mockRedisCache.Object,
+                mockHostelApplicationFeeRedisKeyResolver.Object);
     }
 }

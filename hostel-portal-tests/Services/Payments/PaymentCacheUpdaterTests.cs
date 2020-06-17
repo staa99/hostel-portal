@@ -13,6 +13,14 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
     [TestFixture]
     public class PaymentCacheUpdaterTests
     {
+        private Mock<IHostelApplicationFeeRedisKeyResolver> mockHostelApplicationFeeRedisKeyResolver;
+
+        private Mock<PaymentConfiguration> mockPaymentConfiguration;
+        private Mock<IRedisCache>          mockRedisCache;
+
+        private MockRepository mockRepository;
+
+
         [SetUp]
         public void SetUp()
         {
@@ -22,20 +30,6 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
             mockRedisCache = mockRepository.Create<IRedisCache>();
             mockHostelApplicationFeeRedisKeyResolver = mockRepository.Create<IHostelApplicationFeeRedisKeyResolver>();
         }
-
-
-        private MockRepository mockRepository;
-
-        private Mock<PaymentConfiguration>                  mockPaymentConfiguration;
-        private Mock<IRedisCache>                           mockRedisCache;
-        private Mock<IHostelApplicationFeeRedisKeyResolver> mockHostelApplicationFeeRedisKeyResolver;
-
-
-        private PaymentCacheUpdater CreatePaymentCacheUpdater() =>
-            new PaymentCacheUpdater(
-                mockPaymentConfiguration.Object,
-                mockRedisCache.Object,
-                mockHostelApplicationFeeRedisKeyResolver.Object);
 
 
         [Test]
@@ -55,5 +49,12 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
             Assert.Fail();
             mockRepository.VerifyAll();
         }
+
+
+        private PaymentCacheUpdater CreatePaymentCacheUpdater() =>
+            new PaymentCacheUpdater(
+                mockPaymentConfiguration.Object,
+                mockRedisCache.Object,
+                mockHostelApplicationFeeRedisKeyResolver.Object);
     }
 }

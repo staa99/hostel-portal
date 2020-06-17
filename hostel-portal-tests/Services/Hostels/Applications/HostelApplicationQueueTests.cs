@@ -13,29 +13,11 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Hostels.Applications
     [TestFixture]
     public class HostelApplicationQueueTests
     {
-        [SetUp]
-        public void SetUp()
-        {
-            mockRepository = new MockRepository(MockBehavior.Strict);
-
-            mockHostelApplicationQueueConfiguration = mockRepository.Create<HostelApplicationQueueConfiguration>();
-            mockQueueManager = mockRepository.Create<IQueueManager>();
-            mockHostelApplicationSerializer = mockRepository.Create<IHostelApplicationSerializer>();
-        }
-
+        private Mock<HostelApplicationQueueConfiguration> mockHostelApplicationQueueConfiguration;
+        private Mock<IHostelApplicationSerializer>        mockHostelApplicationSerializer;
+        private Mock<IQueueManager>                       mockQueueManager;
 
         private MockRepository mockRepository;
-
-        private Mock<HostelApplicationQueueConfiguration> mockHostelApplicationQueueConfiguration;
-        private Mock<IQueueManager>                       mockQueueManager;
-        private Mock<IHostelApplicationSerializer>        mockHostelApplicationSerializer;
-
-
-        private HostelApplicationQueue CreateHostelApplicationQueue() =>
-            new HostelApplicationQueue(
-                mockHostelApplicationQueueConfiguration.Object,
-                mockQueueManager.Object,
-                mockHostelApplicationSerializer.Object);
 
 
         [Test]
@@ -53,5 +35,23 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Hostels.Applications
             Assert.Fail();
             mockRepository.VerifyAll();
         }
+
+
+        [SetUp]
+        public void SetUp()
+        {
+            mockRepository = new MockRepository(MockBehavior.Strict);
+
+            mockHostelApplicationQueueConfiguration = mockRepository.Create<HostelApplicationQueueConfiguration>();
+            mockQueueManager = mockRepository.Create<IQueueManager>();
+            mockHostelApplicationSerializer = mockRepository.Create<IHostelApplicationSerializer>();
+        }
+
+
+        private HostelApplicationQueue CreateHostelApplicationQueue() =>
+            new HostelApplicationQueue(
+                mockHostelApplicationQueueConfiguration.Object,
+                mockQueueManager.Object,
+                mockHostelApplicationSerializer.Object);
     }
 }

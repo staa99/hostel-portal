@@ -8,18 +8,7 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Hostels.Applications
     [TestFixture]
     public class HostelApplicationRedisKeyResolverTests
     {
-        [SetUp]
-        public void SetUp()
-        {
-            mockRepository = new MockRepository(MockBehavior.Strict);
-        }
-
-
         private MockRepository mockRepository;
-
-
-        private HostelApplicationRedisKeyResolver CreateHostelApplicationRedisKeyResolver() =>
-            new HostelApplicationRedisKeyResolver();
 
 
         [Test]
@@ -37,5 +26,16 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Hostels.Applications
             Assert.Fail();
             mockRepository.VerifyAll();
         }
+
+
+        [SetUp]
+        public void SetUp()
+        {
+            mockRepository = new MockRepository(MockBehavior.Strict);
+        }
+
+
+        private HostelApplicationRedisKeyResolver CreateHostelApplicationRedisKeyResolver() =>
+            new HostelApplicationRedisKeyResolver();
     }
 }
