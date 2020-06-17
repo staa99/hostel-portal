@@ -12,6 +12,11 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Hostels.Listing
     [TestFixture]
     public class HostelCacheUpdaterTests
     {
+        private Mock<IRedisCache> mockRedisCache;
+
+        private MockRepository mockRepository;
+
+
         [SetUp]
         public void SetUp()
         {
@@ -19,16 +24,6 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Hostels.Listing
 
             mockRedisCache = mockRepository.Create<IRedisCache>();
         }
-
-
-        private MockRepository mockRepository;
-
-        private Mock<IRedisCache> mockRedisCache;
-
-
-        private HostelCacheUpdater CreateHostelCacheUpdater() =>
-            new HostelCacheUpdater(
-                mockRedisCache.Object);
 
 
         [Test]
@@ -46,5 +41,10 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Hostels.Listing
             Assert.Fail();
             mockRepository.VerifyAll();
         }
+
+
+        private HostelCacheUpdater CreateHostelCacheUpdater() =>
+            new HostelCacheUpdater(
+                mockRedisCache.Object);
     }
 }

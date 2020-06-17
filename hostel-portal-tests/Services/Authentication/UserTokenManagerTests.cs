@@ -13,29 +13,11 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Authentication
     [TestFixture]
     public class UserTokenManagerTests
     {
-        [SetUp]
-        public void SetUp()
-        {
-            mockRepository = new MockRepository(MockBehavior.Strict);
-
-            mockAuthenticationConfiguration = mockRepository.Create<AuthenticationConfiguration>();
-            mockDataProtectionProvider = mockRepository.Create<IDataProtectionProvider>();
-            mockSystemClock = mockRepository.Create<ISystemClock>();
-        }
-
-
-        private MockRepository mockRepository;
-
         private Mock<AuthenticationConfiguration> mockAuthenticationConfiguration;
         private Mock<IDataProtectionProvider>     mockDataProtectionProvider;
-        private Mock<ISystemClock>                mockSystemClock;
 
-
-        private UserTokenManager CreateManager() =>
-            new UserTokenManager(
-                mockAuthenticationConfiguration.Object,
-                mockDataProtectionProvider.Object,
-                mockSystemClock.Object);
+        private MockRepository     mockRepository;
+        private Mock<ISystemClock> mockSystemClock;
 
 
         [Test]
@@ -70,5 +52,23 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Authentication
             Assert.Fail();
             mockRepository.VerifyAll();
         }
+
+
+        [SetUp]
+        public void SetUp()
+        {
+            mockRepository = new MockRepository(MockBehavior.Strict);
+
+            mockAuthenticationConfiguration = mockRepository.Create<AuthenticationConfiguration>();
+            mockDataProtectionProvider = mockRepository.Create<IDataProtectionProvider>();
+            mockSystemClock = mockRepository.Create<ISystemClock>();
+        }
+
+
+        private UserTokenManager CreateManager() =>
+            new UserTokenManager(
+                mockAuthenticationConfiguration.Object,
+                mockDataProtectionProvider.Object,
+                mockSystemClock.Object);
     }
 }

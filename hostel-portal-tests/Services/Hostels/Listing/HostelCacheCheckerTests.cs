@@ -10,23 +10,9 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Hostels.Listing
     [TestFixture]
     public class HostelCacheCheckerTests
     {
-        [SetUp]
-        public void SetUp()
-        {
-            mockRepository = new MockRepository(MockBehavior.Strict);
-
-            mockRedisCache = mockRepository.Create<IRedisCache>();
-        }
-
-
-        private MockRepository mockRepository;
-
         private Mock<IRedisCache> mockRedisCache;
 
-
-        private HostelCacheChecker CreateHostelCacheChecker() =>
-            new HostelCacheChecker(
-                mockRedisCache.Object);
+        private MockRepository mockRepository;
 
 
         [Test]
@@ -42,5 +28,19 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Hostels.Listing
             Assert.Fail();
             mockRepository.VerifyAll();
         }
+
+
+        [SetUp]
+        public void SetUp()
+        {
+            mockRepository = new MockRepository(MockBehavior.Strict);
+
+            mockRedisCache = mockRepository.Create<IRedisCache>();
+        }
+
+
+        private HostelCacheChecker CreateHostelCacheChecker() =>
+            new HostelCacheChecker(
+                mockRedisCache.Object);
     }
 }

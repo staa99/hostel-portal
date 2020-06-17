@@ -9,16 +9,7 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Hostels.Listing
     [TestFixture]
     public class HostelWebApiLoaderTests
     {
-        [SetUp]
-        public void SetUp()
-        {
-            mockRepository = new MockRepository(MockBehavior.Strict);
-        }
-
-
         private MockRepository mockRepository;
-
-        private HostelWebApiLoader CreateHostelWebApiLoader() => new HostelWebApiLoader();
 
 
         [Test]
@@ -34,5 +25,15 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Hostels.Listing
             Assert.Fail();
             mockRepository.VerifyAll();
         }
+
+
+        [SetUp]
+        public void SetUp()
+        {
+            mockRepository = new MockRepository(MockBehavior.Strict);
+        }
+
+
+        private HostelWebApiLoader CreateHostelWebApiLoader() => new HostelWebApiLoader();
     }
 }
