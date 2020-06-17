@@ -1,4 +1,7 @@
 # hostel-portal
+
+![GitHub Actions (Build and Tests)](https://github.com/staa99/hostel-portal/workflows/GitHub%20Actions%20(Build%20and%20Tests)/badge.svg)
+
 A toy project to play with the basics of Redis, RabbitMQ and Docker
 
 I'm learning the basics of Redis, RabbitMQ and Docker for building scalable applications.
