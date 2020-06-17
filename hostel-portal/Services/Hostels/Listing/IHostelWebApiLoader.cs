@@ -5,7 +5,7 @@ using Staawork.Funaab.HostelPortal.Services.Hostels.Listing.Dto;
 
 namespace Staawork.Funaab.HostelPortal.Services.Hostels.Listing
 {
-    internal interface IHostelWebApiLoader
+    public interface IHostelWebApiLoader
     {
         /// <summary>
         ///     Loads the hostel data from the Web API

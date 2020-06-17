@@ -6,7 +6,7 @@ using Staawork.Funaab.HostelPortal.Services.Hostels.Listing.Dto;
 
 namespace Staawork.Funaab.HostelPortal.Services.Hostels.Listing
 {
-    internal class HostelLoader : IHostelLoader
+    public class HostelLoader : IHostelLoader
     {
         /// <inheritdoc />
         public async Task<ICollection<HostelDto>> LoadHostels(IHostelCacheChecker cacheChecker,

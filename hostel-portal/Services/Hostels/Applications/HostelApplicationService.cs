@@ -7,7 +7,7 @@ using Staawork.Funaab.HostelPortal.Services.Hostels.Applications.Dto;
 
 namespace Staawork.Funaab.HostelPortal.Services.Hostels.Applications
 {
-    internal class HostelApplicationService : IHostelApplicationService
+    public class HostelApplicationService : IHostelApplicationService
     {
         /// <inheritdoc />
         public async Task<IDictionary<string, HostelApplicationStatus>> CheckHostelApplicationStatusAsync(

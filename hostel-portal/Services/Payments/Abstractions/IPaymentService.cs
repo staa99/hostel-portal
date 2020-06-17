@@ -7,7 +7,7 @@ namespace Staawork.Funaab.HostelPortal.Services.Payments.Abstractions
     /// <summary>
     ///     The base interface for high-level payment services in the hostel portal
     /// </summary>
-    internal interface IPaymentService
+    public interface IPaymentService
     {
         /// <summary>
         ///     Checks the cache for the status of the payment. If it is not present, it checks the Web API service and updates the

@@ -10,7 +10,7 @@ using Staawork.Funaab.HostelPortal.Services.Hostels.Listing.Dto;
 
 namespace Staawork.Funaab.HostelPortal.Services.Hostels.Listing
 {
-    internal class HostelCacheChecker : IHostelCacheChecker
+    public class HostelCacheChecker : IHostelCacheChecker
     {
         private readonly IRedisCache _cache;
 

@@ -1,7 +1,4 @@
-﻿using Staawork.Funaab.HostelPortal.Services.Authentication.Dto;
-
-
-namespace Staawork.Funaab.HostelPortal.Services.Authentication
+﻿namespace Staawork.Funaab.HostelPortal.Services.Authentication.Dto
 {
     /// <summary>
     ///     The default implementation of the <see cref="IUserData" /> interface.
