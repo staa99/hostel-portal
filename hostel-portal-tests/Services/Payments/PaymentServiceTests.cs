@@ -12,10 +12,6 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
     [TestFixture]
     public class PaymentServiceTests
     {
-        private const string DummyReference = "DummyReference";
-        private const PaymentStatus DummyStatus = PaymentStatus.Initiated;
-        private const string DummyMatricNumber = "random-matric-number";
-
         [SetUp]
         public void SetUp()
         {
@@ -23,60 +19,34 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
         }
 
 
+        private const string        DummyReference    = "DummyReference";
+        private const PaymentStatus DummyStatus       = PaymentStatus.Initiated;
+        private const string        DummyMatricNumber = "random-matric-number";
+
         private MockRepository mockRepository;
 
         private static PaymentService CreateService() => new PaymentService();
 
 
-        [Test]
-        public async Task GetPaymentRecordAsync_WhenPaymentFromCacheCheckerNotNull_ShouldReturnPaymentFromCacheChecker()
+        private IPaymentWebApiService CreatePaymentWebApiService(PaymentDto paymentFromWebApiService)
         {
-            // Arrange
-            var service = CreateService();
-            var payment = new PaymentDto
-            {
-                Status = DummyStatus,
-                Reference = DummyReference
-            };
-            var cacheCheckerMock = mockRepository.Create<IPaymentCacheChecker>();
-            cacheCheckerMock.Setup(checker => checker.GetPaymentRecordAsync(DummyMatricNumber))
-                            .Returns(Task.FromResult(payment));
-            var cacheChecker = cacheCheckerMock.Object;
+            var webApiServiceMock = mockRepository.Create<IPaymentWebApiService>();
+            webApiServiceMock.Setup(service => service.GetPaymentRecordAsync(DummyMatricNumber))
+                             .Returns(Task.FromResult(paymentFromWebApiService));
 
-            // Act
-            var result = await service.GetPaymentRecordAsync(
-                             DummyMatricNumber,
-                             cacheChecker,
-                             default,
-                             default);
-
-            // Assert
-            result.ShouldBe(payment);
-            mockRepository.VerifyAll();
+            var webApiService = webApiServiceMock.Object;
+            return webApiService;
         }
 
 
-        [Test]
-        public async Task GetPaymentRecordAsync_WhenPaymentFromCacheCheckerNotNull_ShouldReturnNull()
+        private IPaymentCacheChecker CreatePaymentCacheChecker(PaymentDto? paymentFromCacheChecker)
         {
-            // Arrange
-            var service = CreateService();
-            var matricNumber = "random-matric-number";
             var cacheCheckerMock = mockRepository.Create<IPaymentCacheChecker>();
-            cacheCheckerMock.Setup(checker => checker.GetPaymentRecordAsync(matricNumber))
-                            .Returns(Task.FromResult((PaymentDto?) null));
+            cacheCheckerMock.Setup(checker => checker.GetPaymentRecordAsync(DummyMatricNumber))
+                            .Returns(Task.FromResult(paymentFromCacheChecker));
+
             var cacheChecker = cacheCheckerMock.Object;
-
-            // Act
-            var result = await service.GetPaymentRecordAsync(
-                             matricNumber,
-                             cacheChecker,
-                             default,
-                             default);
-
-            // Assert
-            result.ShouldBe(null);
-            mockRepository.VerifyAll();
+            return cacheChecker;
         }
 
 
@@ -99,6 +69,65 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
 
             // Assert
             Assert.Fail();
+            mockRepository.VerifyAll();
+        }
+
+
+        [Test]
+        public async Task GetPaymentRecordAsync_WhenPaymentFromCacheCheckerNotNull_ShouldReturnPaymentFromCacheChecker()
+        {
+            // Arrange
+            var service = CreateService();
+            var payment = new PaymentDto
+            {
+                Status = DummyStatus,
+                Reference = DummyReference
+            };
+
+            var cacheCheckerMock = mockRepository.Create<IPaymentCacheChecker>();
+            cacheCheckerMock.Setup(checker => checker.GetPaymentRecordAsync(DummyMatricNumber))
+                            .Returns(Task.FromResult(payment));
+
+            var cacheChecker = cacheCheckerMock.Object;
+
+            // Act
+            var result = await service.GetPaymentRecordAsync(
+                             DummyMatricNumber,
+                             cacheChecker,
+                             default,
+                             default);
+
+            // Assert
+            result.ShouldBe(payment);
+            mockRepository.VerifyAll();
+        }
+
+
+        [Test]
+        public async Task GetPaymentRecordAsync_WhenPaymentFromCacheCheckerNull_ShouldReturnPaymentFromWebApi()
+        {
+            // Arrange
+            var service = CreateService();
+            PaymentDto? paymentFromCacheChecker = null;
+            var paymentFromWebApiService = new PaymentDto
+            {
+                Status = DummyStatus,
+                Reference = DummyReference
+            };
+
+            var cacheChecker = CreatePaymentCacheChecker(paymentFromCacheChecker);
+
+            var webApiService = CreatePaymentWebApiService(paymentFromWebApiService);
+
+            // Act
+            var result = await service.GetPaymentRecordAsync(
+                             DummyMatricNumber,
+                             cacheChecker,
+                             default,
+                             webApiService);
+
+            // Assert
+            result.ShouldBe(paymentFromCacheChecker);
             mockRepository.VerifyAll();
         }
 
