@@ -1,8 +1,10 @@
 using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
+using Shouldly;
 using Staawork.Funaab.HostelPortal.Services.Payments;
 using Staawork.Funaab.HostelPortal.Services.Payments.Abstractions;
+using Staawork.Funaab.HostelPortal.Services.Payments.Abstractions.Dto;
 
 
 namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
@@ -20,6 +22,32 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
         private MockRepository mockRepository;
 
         private PaymentService CreateService() => new PaymentService();
+
+
+        [Test]
+        public async Task GetPaymentRecordAsync_WhenPaymentFromCacheCheckerNull_ShouldReturnNull()
+        {
+            // Arrange
+            var service = CreateService();
+            string matricNumber = "random-matric-number";
+            var cacheCheckerMock = mockRepository.Create<IPaymentCacheChecker>();
+            cacheCheckerMock.Setup(checker => checker.GetPaymentRecordAsync(matricNumber))
+                            .Returns(Task.FromResult((PaymentDto?) null));
+            IPaymentCacheChecker cacheChecker = cacheCheckerMock.Object;
+            IPaymentCacheUpdater cacheUpdater = null;
+            IPaymentWebApiService webApiService = null;
+
+            // Act
+            var result = await service.GetPaymentRecordAsync(
+                             matricNumber,
+                             cacheChecker,
+                             cacheUpdater,
+                             webApiService);
+
+            // Assert
+            result.ShouldBe(null);
+            mockRepository.VerifyAll();
+        }
 
 
         [Test]
