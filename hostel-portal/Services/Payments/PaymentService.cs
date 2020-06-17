@@ -14,9 +14,9 @@ namespace Staawork.Funaab.HostelPortal.Services.Payments
                                                              IPaymentWebApiService webApiService)
         {
             var payment = await cacheChecker.GetPaymentRecordAsync(matricNumber);
-            if (payment == null)
+            if (payment != null)
             {
-                return null;
+                return payment;
             }
 
             payment = await webApiService.GetPaymentRecordAsync(matricNumber);
