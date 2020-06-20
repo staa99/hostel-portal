@@ -14,15 +14,15 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Hostels.Listing
     {
         private Mock<IRedisCache> mockRedisCache;
 
-        private MockRepository mockRepository;
+        private MockRepository _mockRepository;
 
 
         [SetUp]
         public void SetUp()
         {
-            mockRepository = new MockRepository(MockBehavior.Strict);
+            _mockRepository = new MockRepository(MockBehavior.Strict);
 
-            mockRedisCache = mockRepository.Create<IRedisCache>();
+            mockRedisCache = _mockRepository.Create<IRedisCache>();
         }
 
 
@@ -39,7 +39,7 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Hostels.Listing
 
             // Assert
             Assert.Fail();
-            mockRepository.VerifyAll();
+            _mockRepository.VerifyAll();
         }
 
 
