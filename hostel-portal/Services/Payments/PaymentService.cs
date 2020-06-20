@@ -7,6 +7,13 @@ namespace Staawork.Funaab.HostelPortal.Services.Payments
 {
     public class PaymentService : IPaymentService
     {
+        /// <summary>
+        ///     Message returned when payment has already been made. Localization is not used because the system is designed simply
+        ///     for learning purposes and not for real production use.
+        /// </summary>
+        public const string AlreadyPaidMessage = "You have already made payment";
+
+
         /// <inheritdoc />
         public async Task<PaymentDto?> GetPaymentRecordAsync(string                matricNumber,
                                                              IPaymentCacheChecker  cacheChecker,
@@ -41,7 +48,7 @@ namespace Staawork.Funaab.HostelPortal.Services.Payments
             {
                 return new InitiatePaymentResultDto
                 {
-                    Message = "You have already made payment",
+                    Message = AlreadyPaidMessage,
                     PaymentInfo = payment
                 };
             }
