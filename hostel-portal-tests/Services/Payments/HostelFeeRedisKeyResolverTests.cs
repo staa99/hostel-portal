@@ -1,6 +1,7 @@
-using Moq;
 using NUnit.Framework;
+using Shouldly;
 using Staawork.Funaab.HostelPortal.Services.Payments;
+using StackExchange.Redis;
 
 
 namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
@@ -8,30 +9,19 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
     [TestFixture]
     public class HostelFeeRedisKeyResolverTests
     {
-        private MockRepository _mockRepository;
-
-
-        [SetUp]
-        public void SetUp()
-        {
-            _mockRepository = new MockRepository(MockBehavior.Strict);
-        }
-
-
         [Test]
-        public void Resolve_StateUnderTest_ExpectedBehavior()
+        public void Resolve_WhenCalled_ShouldCreateRedisKeyInDefinedFormat()
         {
             // Arrange
-            var hostelFeeRedisKeyResolver = CreateHostelFeeRedisKeyResolver();
-            string source = null;
+            var hostelApplicationFeeRedisKeyResolver = CreateHostelFeeRedisKeyResolver();
+            var source = "matric-number";
+            var expectedResult = new RedisKey("payments").Append("hostel-fees").Append(source);
 
             // Act
-            var result = hostelFeeRedisKeyResolver.Resolve(
-                source);
+            var result = hostelApplicationFeeRedisKeyResolver.Resolve(source);
 
             // Assert
-            Assert.Fail();
-            _mockRepository.VerifyAll();
+            result.ShouldBe(expectedResult);
         }
 
 
