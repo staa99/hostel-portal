@@ -18,17 +18,17 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
         private Mock<PaymentConfiguration> mockPaymentConfiguration;
         private Mock<IRedisCache>          mockRedisCache;
 
-        private MockRepository mockRepository;
+        private MockRepository _mockRepository;
 
 
         [SetUp]
         public void SetUp()
         {
-            mockRepository = new MockRepository(MockBehavior.Strict);
+            _mockRepository = new MockRepository(MockBehavior.Strict);
 
-            mockPaymentConfiguration = mockRepository.Create<PaymentConfiguration>();
-            mockRedisCache = mockRepository.Create<IRedisCache>();
-            mockHostelApplicationFeeRedisKeyResolver = mockRepository.Create<IHostelApplicationFeeRedisKeyResolver>();
+            mockPaymentConfiguration = _mockRepository.Create<PaymentConfiguration>();
+            mockRedisCache = _mockRepository.Create<IRedisCache>();
+            mockHostelApplicationFeeRedisKeyResolver = _mockRepository.Create<IHostelApplicationFeeRedisKeyResolver>();
         }
 
 
@@ -47,7 +47,7 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Payments
 
             // Assert
             Assert.Fail();
-            mockRepository.VerifyAll();
+            _mockRepository.VerifyAll();
         }
 
 
