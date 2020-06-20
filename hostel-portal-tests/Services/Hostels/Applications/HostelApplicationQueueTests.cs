@@ -17,7 +17,18 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Hostels.Applications
         private Mock<IHostelApplicationSerializer>        mockHostelApplicationSerializer;
         private Mock<IQueueManager>                       mockQueueManager;
 
-        private MockRepository mockRepository;
+        private MockRepository _mockRepository;
+
+
+        [SetUp]
+        public void SetUp()
+        {
+            _mockRepository = new MockRepository(MockBehavior.Strict);
+
+            mockHostelApplicationQueueConfiguration = _mockRepository.Create<HostelApplicationQueueConfiguration>();
+            mockQueueManager = _mockRepository.Create<IQueueManager>();
+            mockHostelApplicationSerializer = _mockRepository.Create<IHostelApplicationSerializer>();
+        }
 
 
         [Test]
@@ -33,18 +44,7 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Hostels.Applications
 
             // Assert
             Assert.Fail();
-            mockRepository.VerifyAll();
-        }
-
-
-        [SetUp]
-        public void SetUp()
-        {
-            mockRepository = new MockRepository(MockBehavior.Strict);
-
-            mockHostelApplicationQueueConfiguration = mockRepository.Create<HostelApplicationQueueConfiguration>();
-            mockQueueManager = mockRepository.Create<IQueueManager>();
-            mockHostelApplicationSerializer = mockRepository.Create<IHostelApplicationSerializer>();
+            _mockRepository.VerifyAll();
         }
 
 

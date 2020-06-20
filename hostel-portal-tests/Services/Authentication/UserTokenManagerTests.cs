@@ -16,8 +16,19 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Authentication
         private Mock<AuthenticationConfiguration> mockAuthenticationConfiguration;
         private Mock<IDataProtectionProvider>     mockDataProtectionProvider;
 
-        private MockRepository     mockRepository;
+        private MockRepository     _mockRepository;
         private Mock<ISystemClock> mockSystemClock;
+
+
+        [SetUp]
+        public void SetUp()
+        {
+            _mockRepository = new MockRepository(MockBehavior.Strict);
+
+            mockAuthenticationConfiguration = _mockRepository.Create<AuthenticationConfiguration>();
+            mockDataProtectionProvider = _mockRepository.Create<IDataProtectionProvider>();
+            mockSystemClock = _mockRepository.Create<ISystemClock>();
+        }
 
 
         [Test]
@@ -33,7 +44,7 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Authentication
 
             // Assert
             Assert.Fail();
-            mockRepository.VerifyAll();
+            _mockRepository.VerifyAll();
         }
 
 
@@ -50,18 +61,7 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Authentication
 
             // Assert
             Assert.Fail();
-            mockRepository.VerifyAll();
-        }
-
-
-        [SetUp]
-        public void SetUp()
-        {
-            mockRepository = new MockRepository(MockBehavior.Strict);
-
-            mockAuthenticationConfiguration = mockRepository.Create<AuthenticationConfiguration>();
-            mockDataProtectionProvider = mockRepository.Create<IDataProtectionProvider>();
-            mockSystemClock = mockRepository.Create<ISystemClock>();
+            _mockRepository.VerifyAll();
         }
 
 

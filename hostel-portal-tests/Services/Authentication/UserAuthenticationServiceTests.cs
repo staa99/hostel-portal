@@ -9,7 +9,14 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Authentication
     [TestFixture]
     public class UserAuthenticationServiceTests
     {
-        private MockRepository mockRepository;
+        private MockRepository _mockRepository;
+
+
+        [SetUp]
+        public void SetUp()
+        {
+            _mockRepository = new MockRepository(MockBehavior.Strict);
+        }
 
 
         [Test]
@@ -27,14 +34,7 @@ namespace Staawork.Funaab.HostelPortal.Tests.Services.Authentication
 
             // Assert
             Assert.Fail();
-            mockRepository.VerifyAll();
-        }
-
-
-        [SetUp]
-        public void SetUp()
-        {
-            mockRepository = new MockRepository(MockBehavior.Strict);
+            _mockRepository.VerifyAll();
         }
 
 
